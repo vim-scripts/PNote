@@ -1,0 +1,15 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3098
+
+Syntax, Folding function and clipboard yank with reformat function for my personal notes
+
+No documentation! It is simple enough as to understand just by looking at the little code. 
+ 
+An example of my notes:
+
+# Install
+    ; Bootstrap if doing this not in NetBSD
+        Check platform notes <url:http://www.netbsd.org/docs/pkgsrc/platforms.html&gt;
+        $ cd pkgsrc/bootstrap
+        ; The parameters for OSX -> case and non root user
+        $ ./bootstrap --ignore-case-check --unprivileged
+
