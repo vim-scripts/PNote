@@ -2,7 +2,7 @@
 "
 " File: Power Note for Vim
 "
-" Author: Francisco Garcia Rodriguez <francisco.garcia.100@gmail.com>
+" Author: Francisco Garcia Rodriguez <public@francisco-garcia.net>
 "
 " Licence: Copyright (C) 2010 Francisco Garcia Rodriguez
 " This program is free software: you can redistribute it and/or
@@ -14,19 +14,15 @@
 " MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 " GNU General Public License for more details.
 " 
-" Repository: git@github.com:FGarcia/Vim.git (pnote subfolder)
-"
-" Files:    
-"       plugin/pnote.vim
-"       syntax/pnote.vim
-"       ftplugin/pnote.vim
-"
-" Version:  0.1 (Alpha)
-"
+" Version:
 " History:
-"   v0.1  2010-05-23
-"      Initial version
+"   (see plugin/pnote.vim)
 "
+
+if exists ("b:did_ftplugin_pnote")
+   finish
+endif
+let b:did_ftplugin_pnote = 1
 
 setlocal foldexpr=Pnote_getFoldLevel(v:lnum)
 setlocal fdm=expr

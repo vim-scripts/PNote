@@ -2,7 +2,7 @@
 "
 " File: Power Note for Vim
 "
-" Author: Francisco Garcia Rodriguez <francisco.garcia.100@gmail.com>
+" Author: Francisco Garcia Rodriguez <public@francisco-garcia.net>
 "
 " Licence: Copyright (C) 2010 Francisco Garcia Rodriguez
 " This program is free software: you can redistribute it and/or
@@ -14,18 +14,26 @@
 " MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 " GNU General Public License for more details.
 " 
-" Repository: git@github.com:FGarcia/Vim.git (pnote subfolder)
+" Webpage: 
+"   https://github.com/FGarcia/pnote/
+"   http://www.vim.org/scripts/script.php?script_id=3098
 "
 " Files:    
 "       plugin/pnote.vim
 "       syntax/pnote.vim
 "       ftplugin/pnote.vim
 "
-" Version:  0.1 (Alpha)
+" Version:  0.2 
 "
 " History:
+"   v0.2  2011-03-20
+"       Syntax for bibliography nodes
+"       Syntax for command line instructions
+"       Easy copy to command line instructions to the system clipboard
+"       Minor bugfixes
+"
 "   v0.1  2010-05-23
-"      Initial version
+"       Initial version
 " ------------------------------------------------------------------------------
 
 
@@ -46,8 +54,7 @@ endfu
 
 " Column of the first character for sections
 " 
-" Sections start with a section marker (# @ ;) or just contain a project title
-" (uppercase and '_'). 
+" Sections start with a main section marker (#) or with a subsection (;) 
 "
 " If neither of them is found, it returns the column of the
 " first character. Otherwise returns -1
@@ -61,13 +68,12 @@ function! Pnote_getSectionColumn(lineNum)
         return -1
     endif
 
-    " Check for lines with just a project title
-    let projectTitle = match (lineText,'^\s\+[A-Z][A-Z0-9_]\+\s*$')
-    if projectTitle == 0
+    let mainSectionLine = match (lineText,'^#')
+    if mainSectionLine == 0
         return lineCol
     endif
 
-    let markerPos = match (lineText,'[#@;]')
+    let markerPos = match (lineText,';')
     if markerPos == lineCol
         " Line starting with a section marker
         return markerPos
